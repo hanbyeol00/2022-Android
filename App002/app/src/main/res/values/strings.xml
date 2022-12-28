@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">App-002</string>
+    <string name="input_word_hint">Word input...</string>
+    <string name="btn_save_text">Save</string>
+    <string name="btn_call">call</string>
+    <string name="btn_phone">phone</string>
+</resources>
