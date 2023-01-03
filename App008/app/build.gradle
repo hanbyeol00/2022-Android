@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    // Project gradle 에 설정된 plugin 을 활성화 하기
     id 'androidx.navigation.safeargs'
 }
 
@@ -32,8 +31,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    // xml 과 binding 을 수행하여 findViewById 를 사용하지 않고
-    // view 를 핸들링 하기 위한 설정
     buildFeatures {
         viewBinding true
     }
@@ -48,19 +45,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    // implementation "androidx.fragment:fragment-ktx:$nav_version"
-    // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    // Feature module Support
-    // implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
-
-    // Testing Navigation
-    // androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
-
-    // Jetpack Compose Integration
-    // implementation "androidx.navigation:navigation-compose:$nav_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
