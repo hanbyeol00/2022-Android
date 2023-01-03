@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">App-Project</string>
+    <string name="line">%1$d</string>
+</resources>
