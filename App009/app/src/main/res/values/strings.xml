@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Scramble Word</string>
+    <string name="word_typing">Please Typing Word</string>
+    <string name="word_skip">SKIP</string>
+    <string name="word_confirm">SUBMIT</string>
+    <string name="problem_alphabet_word">Problem Alphabet Word</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
