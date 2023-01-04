@@ -17,7 +17,7 @@
      -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
-        android:name="com.hanbyeol.game.MainFragment"
+        android:name="com.hanbyeol.game.ui.MainFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

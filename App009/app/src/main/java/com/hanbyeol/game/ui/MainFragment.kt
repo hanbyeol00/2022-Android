@@ -1,11 +1,15 @@
-package com.hanbyeol.game
+package com.hanbyeol.game.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.google.android.material.snackbar.Snackbar
 import com.hanbyeol.game.databinding.FragmentMainBinding
+import com.hanbyeol.game.models.WordViewModel
 
 
 class MainFragment : Fragment() {
@@ -55,6 +59,17 @@ class MainFragment : Fragment() {
     private val binding get() = _binding!!
 
     /**
+     * WordViewModel 클래스를 기준으로
+     * wordViewModel 객체(Object) 변수 선언하기
+     * 클래스는 하나의 소스코드이고 실제 이 코드의 내용을
+     * 사용하기 위해서는 객체(Object) 변수로 선언을 해 주어야 한다
+     *
+     * by viewModels() : viewModels() 함수에게 변수 초기화 위임하기
+     * wordViewModel 을 사용할수 있도록 생성, 초기화 해 달라
+     */
+    private val wordViewModel : WordViewModel by viewModels()
+
+    /**
      * onCreateView 함수가 실행되는 동안에는
      * 화면에 그려지는 view 들이 미완성 되었을 수 있다
      * 화면에 그려지는 view 들에게 행해지는 연산은
@@ -67,8 +82,6 @@ class MainFragment : Fragment() {
 
         _binding = FragmentMainBinding.inflate(inflater,container,false)
         return binding.root
-
-        // return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -77,6 +90,50 @@ class MainFragment : Fragment() {
         // 어떤 view 통해서 문자열을 읽거나
         // view 에 문자열을 보이거나 하는 일들은
         // onCreateView 에서 수행하지 말고, onViewCreated 에서 하도록 한다
+
+        /**
+         * 안드로이드의 viewModel 패턴
+         * 1. 감시할 데이터를 담을 변수를 WordViewModel 클래스에 선언
+         * 2. WordViewModel 클래스에 변수에 대한 getter method 선언
+         * 3. 필요에 따라 변수에 값을 저장하는 함수 선언
+         * 4. Activity 나 Fragment 에서 viewModel 객체를 생성
+         * 5. 생성된 viewModel 객체를 Observer 에 등록
+         *
+         * 이 상태가 되면 어디선가 문자열 변수의 값이 변경되면
+         * Observer 로 등록된 코드가 자동 실행된다
+         * 일종의 event 현상
+         * viewModel 에 등록된 변수의 값이 변경되면
+         * event 가 발생하고
+         * observer 로 등록한 코드가 자동 실행된다다         */
+
+        // wordViewModel 의 word(_word) 변수를 감시할 Observer 생성하기
+        val wordObServer = Observer<String>{
+            Snackbar.make(binding.txtInputWord,it,Snackbar.LENGTH_LONG).show()
+        }
+
+        wordViewModel.engWord.observe(viewLifecycleOwner, wordObServer)
+
+        /**
+         * submit 버튼이 클릭되면
+         * wordViewModel 의 engWord 변수에
+         * txtInputWord 에 입력된 문자열을 저장(setting)하라
+         */
+        binding.btnSubmit.setOnClickListener {
+            val word = binding.txtInputWord.text.toString()
+            wordViewModel.setEngWord(word)
+        }
+
+        binding.btnSkip.setOnClickListener {
+            wordViewModel.nextWord()
+        }
+
+        /**
+         * fragment 의 lifecycle 동안에 wordViewModel 을
+         * 계속 감시하면서 binding 에 연결된
+         * layout / data / view 간의 변화되는 내용을 sync 하라
+         */
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.wordViewModel = wordViewModel
     }
 
     /**
