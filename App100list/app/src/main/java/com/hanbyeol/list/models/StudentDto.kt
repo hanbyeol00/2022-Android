@@ -2,11 +2,11 @@ package com.hanbyeol.list.models
 
 /**
  * data class
- *
- *
- *
- *
- *
+ *Kotlin 에서 프로그래밍을 할때
+ * data 들을 하나의 묶음으로 처리하는 용도의 클래스
+ * 이 클래스를 객체로 생성하여 학생 개별 데이터를
+ * 저장한다
+ * 저장한 데이터는 DB 에 보내거나 UI 보내는 용도로 사용
  *
  * Java 와 같은 언어에는 data class 같은 개념이 없다
  * Java 와 같은 언어에서 일반 class 를 data class 처럼
