@@ -40,8 +40,7 @@ class StudentViewModel : ViewModel() {
          *
          * 때문에 PC 코드의 random() 함수가 return 하는 값을
          * 의사난수, 유사난수 라고 한다
-         * 중복된 값이 많이 나타난다
-         */
+         * 중복된 값이 많이 나타난다다         */
         val studentString = studentStringList.random()
         val items : List<String> = studentString.split(":")
 
