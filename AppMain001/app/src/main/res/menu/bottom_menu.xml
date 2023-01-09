@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_main"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_apps_24"
+        android:title="메인"/>
+    <item
+        android:id="@+id/nav_writing"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_border_color_24"
+        android:title="내가 쓴글" />
+    <item
+        android:id="@+id/nav_mini_game"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_videogame_asset_24"
+        android:title="미니게임"/>
+    <item
+        android:id="@+id/nav_login"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_login_24"
+        android:title="로그인"/>
+</menu>
